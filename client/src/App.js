@@ -1,7 +1,15 @@
 import React, { useState, useEffect } from "react";
+import "./styles/App.css"
+import Header from "./componets/Header";
+import {
+  BrowserRouter as Router,
+  Route,
+} from "react-router-dom";
+import Search from "./componets/Search";
 
 // SERVICES THAT CALL OUR API ENDPOINTS
 import { getAllProfiles } from "./services/profileService";
+
 
 function App() {
   const [profiles, setProfiles] = useState(null);
@@ -30,7 +38,30 @@ function App() {
   };
 
   return (
-    <div>
+    <Router>
+    <div className="app-container">
+      <Route exact path="/"
+      render={() => ( 
+        <>
+       <Header/>
+       <Search />
+      </>
+      
+      )}
+     />
+    <Route exact path="/upload"
+      render={() => ( 
+        <>
+       <Header/>
+       
+      </>
+      
+      )}
+     />
+     <Route exact path="/about"
+     render={() => (
+       <>
+       <Header/>
       <ul>
         {profiles && profiles.length > 0 ? (
           profiles.map((profile) => renderProfile(profile))
@@ -38,7 +69,12 @@ function App() {
           <p>No profiles found</p>
         )}
       </ul>
-    </div>
+    
+       </>
+     )}
+     />
+     </div> 
+    </Router>
   );
 }
 

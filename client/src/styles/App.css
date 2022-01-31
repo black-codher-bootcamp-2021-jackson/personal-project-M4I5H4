@@ -1,0 +1,31 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato&family=Playfair+Display&family=Poppins&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #000021;
+  font-family: "Playfiar Display", "Poopins",
+    "Lato", sans-serif;
+  color: #FF6666;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0;
+}
+
+.header {
+  align-items: center;
+  justify-content: center;
+}
+.header h1,
+.header .breadcrumb_nav {
+  text-align: center;
+
+}
+.leolion{
+  height: 150px;
+  width: 150px;
+  background-color: #D8D8D8;
+  border-radius: 10px 0 10px 0;
+}
