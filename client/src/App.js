@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./styles/App.css"
 import Header from "./componets/Header";
-import {
-  BrowserRouter as Router,
-  Route,
+import { BrowserRouter as Router, Route, Routes,
 } from "react-router-dom";
 import Search from "./componets/Search";
 
@@ -39,27 +37,15 @@ function App() {
 
   return (
     <Router>
-    <div className="app-container">
+    <Routes>
       <Route exact path="/"
-      render={() => ( 
-        <>
-       <Header/>
-       <Search />
-      </>
-      
-      )}
-     />
+      element={ <><Header /><Search /></>}
+      />
     <Route exact path="/upload"
-      render={() => ( 
-        <>
-       <Header/>
-       
-      </>
-      
-      )}
+      element={  <Header/> }
      />
      <Route exact path="/about"
-     render={() => (
+     element={
        <>
        <Header/>
       <ul>
@@ -69,13 +55,12 @@ function App() {
           <p>No profiles found</p>
         )}
       </ul>
-    
        </>
-     )}
+     }
      />
-     </div> 
+    </Routes>
     </Router>
   );
-}
+};
 
 export default App;
