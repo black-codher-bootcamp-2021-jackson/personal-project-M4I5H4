@@ -1,27 +1,27 @@
 import React from "react";
-import leolion from "../styles/leolion-black.png"
+import leologo from "../styles/Leologo.png"
+import { Link } from 'react-router-dom'
 
 const Header = () => {
   return (
     <div className="header">
         <div className="navimg">
-            <img className="leolion" src={ leolion } alt="lion logo"/>
+            <img className="leologo" src={ leologo } alt="lion logo"/>
         </div>
       <h1>
-        <i className="fas fa-photo-video"></i>  {" "}Reference Library {" "}
-      </h1>
+        <i className="fas fa-photo-video"></i>  {" "} Reference Library {" "} </h1>
       <div className="breadcrumb_nav">
-        <span className="home"> HOME </span> |
-        <span className="uploadlink">
+        <Link to="/" className="home"> SEARCH </Link> |
+        <Link to="/upload" className="uploadlink">
           {" "}
-          <i class="fas fa-upload"></i> UPLOAD{" "}
-        </span>{" "}
+          <i className="fas fa-upload"></i> UPLOAD{" "}
+        </Link>{" "}
         |
-        <span className="aboutlink">
+        <Link to="/about" className="aboutlink">
           {" "}
-          <i class="far fa-comment-dots"></i>{" "}
+          <i className="far fa-comment-dots"></i>{" "}
           ABOUT{" "}
-        </span>
+        </Link>
       </div>
     </div>
   );

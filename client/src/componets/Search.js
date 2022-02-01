@@ -4,8 +4,8 @@ import React from 'react';
 const Search = () => {
   return <div>
       <form>
-          <label>
-            Search For Reference:{" "}
+          <label className="label">
+            Search For a Reference:{" "}
           </label>
           <input className="searchBar" type="text"/>
           <button className="submit-btn" type="submit">

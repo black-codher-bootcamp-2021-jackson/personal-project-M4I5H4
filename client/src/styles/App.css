@@ -2,30 +2,147 @@
 
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
-
+:root{
+  --color-peach: #ff6666;
+  --color-navy: #000021;
+  --color-grey: #d8d8d8;
+}
 body {
   background-color: #000021;
   font-family: "Playfiar Display", "Poopins",
     "Lato", sans-serif;
   color: #FF6666;
   height: 100vh;
-  overflow: hidden;
   margin: 0;
 }
 
 .header {
   align-items: center;
   justify-content: center;
+  font-size: 3rem;
 }
 .header h1,
 .header .breadcrumb_nav {
   text-align: center;
 
 }
-.leolion{
+.leologo{
   height: 150px;
-  width: 150px;
+  width: 200px;
   background-color: #D8D8D8;
-  border-radius: 10px 0 10px 0;
+  border-radius: 10px;
+}
+
+a{
+  text-decoration: none;
+  color: var(--color-peach);
+  transition: background-color 350ms;
+}
+
+a:hover{
+  color: var(--color-grey);
+ 
+}
+
+/* serach bar */
+.form{
+  display: grid;
+}
+.label{
+  font-size: 1.2rem;
+  margin-bottom: 0.2rem;
+}
+
+.searchBar{
+  font-size: 1rem;
+  padding: 0.5em 2em;
+  line-height:  1.5rem;
+  border-radius: 20px;
+  border: 2px solid black;
+  margin-bottom: 1rem;
+  width: 100%;
+  
+}
+
+.submit-btn{
+  background-color: var(--color-grey);
+  color: var(--color-navy);
+  padding: 0.5em 2em;
+  border: 1px solid var(--color-navy);
+  border-radius: 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 350ms;
+  width: 100%;
+}
+
+.submit-btn:hover{
+  background-color: var(--color-peach);
+  color: var(--color-grey);
+}
+
+.collections{
+  margin-top: 50px;
+  margin-bottom: 15px;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+.collections span {
+  padding: 30px;
+ font-size: 3em;
+  cursor: pointer;
+  text-align: center;
+}
+/* upload form page */
+.upload-form-container{
+ 
+  font-size: 1.5rem;
+}
+
+.upload-form{
+  display: block;
+  padding: 10px;
+  align-content: center;
+ 
+}
+
+ .upload-title-name, .upload-description {
+  font-size: 1rem;
+  padding: 1em 2em;
+  line-height:  1.5rem;
+  border-radius: 20px;
+  margin-bottom: 1rem;
+
+}
+
+.upload-form input.upload-image-file {
+
+  color: var(--color-peach);
+  font-size: 1rem;
+  padding: 0.5em 2em;
+  line-height:  1.5rem;
+  border-radius: 20px;
+  margin-bottom: 1rem;
+  cursor: pointer;
+}
+
+  .upload-form button{
+  background-color: var(--color-grey);
+  color: var(--color-navy);
+  padding: 0.5em 2em;
+  border: 1px solid var(--color-navy);
+  border-radius: 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 350ms;
+}
+
+.upload-form button:hover{
+  background-color: var(--color-peach);
+  color: var(--color-grey);
 }

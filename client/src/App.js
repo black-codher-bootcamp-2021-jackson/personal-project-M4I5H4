@@ -4,6 +4,8 @@ import Header from "./componets/Header";
 import { BrowserRouter as Router, Route, Routes,
 } from "react-router-dom";
 import Search from "./componets/Search";
+import Collections from "./componets/Collections";
+import UploadForm from "./componets/UploadForm";
 
 // SERVICES THAT CALL OUR API ENDPOINTS
 import { getAllProfiles } from "./services/profileService";
@@ -39,10 +41,10 @@ function App() {
     <Router>
     <Routes>
       <Route exact path="/"
-      element={ <><Header /><Search /></>}
+      element={ <><Header /><Search /> <Collections /> </>}
       />
     <Route exact path="/upload"
-      element={  <Header/> }
+      element={ <><Header/> <UploadForm /> </>  }
      />
      <Route exact path="/about"
      element={
