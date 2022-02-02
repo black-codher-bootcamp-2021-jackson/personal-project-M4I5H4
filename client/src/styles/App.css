@@ -100,7 +100,7 @@ a:hover{
 }
 /* upload form page */
 .upload-form-container{
- 
+ align-items: center;
   font-size: 1.5rem;
 }
 
@@ -145,4 +145,13 @@ a:hover{
 .upload-form button:hover{
   background-color: var(--color-peach);
   color: var(--color-grey);
+}
+
+.about-container{
+  margin: 5px;
+  padding: 10px;
+}
+
+.about-container p {
+  padding: 5px;
 }

@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Route, Routes,
 import Search from "./componets/Search";
 import Collections from "./componets/Collections";
 import UploadForm from "./componets/UploadForm";
+import About from "./componets/About";
 
 // SERVICES THAT CALL OUR API ENDPOINTS
 import { getAllProfiles } from "./services/profileService";
@@ -25,17 +26,17 @@ function App() {
     getProfiles();
   }, [profiles]);
 
-  const renderProfile = (user) => {
-    return (
-      <li key={user._id}>
-        <h3>
-          {`${user.first_name} 
-          ${user.last_name}`}
-        </h3>
-        <p>{user.location}</p>
-      </li>
-    );
-  };
+  // const renderProfile = (user) => {
+  //   return (
+  //     <li key={user._id}>
+  //       <h3>
+  //         {`${user.first_name} 
+  //         ${user.last_name}`}
+  //       </h3>
+  //       <p>{user.location}</p>
+  //     </li>
+  //   );
+  // };
 
   return (
     <Router>
@@ -50,13 +51,14 @@ function App() {
      element={
        <>
        <Header/>
-      <ul>
+       <About />
+      {/* <ul>
         {profiles && profiles.length > 0 ? (
           profiles.map((profile) => renderProfile(profile))
         ) : (
           <p>No profiles found</p>
         )}
-      </ul>
+      </ul> */}
        </>
      }
      />
