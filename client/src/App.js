@@ -10,9 +10,23 @@ import About from "./componets/About";
 
 // SERVICES THAT CALL OUR API ENDPOINTS
 import { getAllProfiles } from "./services/profileService";
+import { getAllImages } from "./services/imageService";
 
 
 function App() {
+
+  // const[images, setImages] = useState(null)
+
+  // useEffect(() => {
+  //   async function getImages(){
+  //     if(!images) {
+  //       const res = await getAllImages();
+  //       setImages(res)
+  //     }
+  //   }
+
+  //   getImages();
+  // }, [images])
   const [profiles, setProfiles] = useState(null);
 
   useEffect(() => {
