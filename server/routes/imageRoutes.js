@@ -6,7 +6,12 @@ const imageRoutes = (app) => {
   app.get("/api/images", async (req, res) => {
     const images = await Images.find();
 
-    return res.status(200).send(images);
+    return res
+      .status(200)
+      .send({
+        total_images: images.length,
+        images,
+      });
   });
 
   //@desc GET single image by id
@@ -18,68 +23,58 @@ const imageRoutes = (app) => {
     );
     return res
       .status(200)
-      .send({ err: false, getImagebyId });
+      .send({ success: true, getImagebyId });
   });
 
   //@desc POST create new image profile
-  app.post(
-    "/api/images",
-    async (req, res, next) => {
-      try {
-        const addImage = await Images.create(
-          req.body
-        );
-        res
-          .status(201)
-          .json({
-            success: true,
-            data: addImage,
-          });
-      } catch (err) {
-        res.status(400).json({ success: false });
-      }
+  app.post("/api/images", async (req, res) => {
+    try {
+      const addImage = await Images.create(
+        req.body
+      );
+      res.status(201).json({
+        success: true,
+        addImage,
+      });
+    } catch (err) {
+      res.status(400).json({ success: false });
     }
-  );
+  });
 
   //@desc modify image infomation - not working
   app.put(
     "/api/images/:id",
     async (req, res, next) => {
-      try {
-        const modifyImage =
-          await Images.findByIdAndUpdate(
-            req.params.id,
-            req.body
-            //  { new: true, runValidators: true}
-          );
-        if (!modifyImage) {
-          return res.status(400)
-            .json({ success: false });
-        }
-        res
-          .status(200)
-          .json({
-            success: true,
-            data: modifyImage,
-          });
-      } catch (err) {
-        res.status(400).json({ success: false });
-      }
+      const id = req.params.id;
+
+      const modifyImageData =
+        await Images.findByIdAndUpdate(
+          id,
+          req.body
+        );
+
+      return res
+        .status(202)
+        .send({ success: true, modifyImageData });
     }
   );
 
   //@desc DELETE image using id
 
-  app.delete('/api/images/:id', async (req, res, next) =>{
-      try {
-          const deleteImage = await Images.findByIdAndDelete(
-              req.params.id
-          );
-          res.status(200).json({ success: true, data: {} })
-      } catch (err) {
-         res.status(400).json({ success:false }) 
-      }
-  })
+  app.delete(
+    "/api/images/:id",
+    async (req, res, next) => {
+      const id = req.params.id;
+
+      const deleteImageById =
+        await Images.findByIdAndDelete(id);
+
+      return res.status(202).send({
+        err: false,
+        deleteImageById,
+      });
+    }
+  );
 };
 
 module.exports = imageRoutes;
