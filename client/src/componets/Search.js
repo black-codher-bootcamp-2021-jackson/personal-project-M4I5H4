@@ -1,18 +1,37 @@
+import React from "react";
 
-import React from 'react';
-
-const Search = () => {
-  return <div>
-      <form>
-          <label className="label">
-            Search For a Reference:{" "}
-          </label>
-          <input className="searchBar" type="text"/>
-          <button className="submit-btn" type="submit">
-              Search
-          </button>
+const Search = (props) => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    props.findImages(props.term);
+  };
+  return (
+    <div>
+      <form
+        className="form"
+        id="searchAPI"
+        onSubmit={handleSubmit}
+      >
+        <label className="label">
+          Search For a Reference:{" "}
+        </label>
+        <input
+          id="term"
+          className="searchBar"
+          type="text"
+          placeholder="please tyoe here..."
+          value={props.term}
+          onChange={(e) => props.setTerm(e.target.value)}
+        />
+        <button
+          className="submit-btn"
+          type="submit"
+        >
+          Search
+        </button>
       </form>
-  </div>;
+    </div>
+  );
 };
 
 export default Search;

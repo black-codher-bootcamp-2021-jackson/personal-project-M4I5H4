@@ -9,36 +9,36 @@ import UploadForm from "./componets/UploadForm";
 import About from "./componets/About";
 
 // SERVICES THAT CALL OUR API ENDPOINTS
-import { getAllProfiles } from "./services/profileService";
+// import { getAllProfiles } from "./services/profileService";
 import { getAllImages } from "./services/imageService";
 
 
 function App() {
 
-  // const[images, setImages] = useState(null)
-
-  // useEffect(() => {
-  //   async function getImages(){
-  //     if(!images) {
-  //       const res = await getAllImages();
-  //       setImages(res)
-  //     }
-  //   }
-
-  //   getImages();
-  // }, [images])
-  const [profiles, setProfiles] = useState(null);
+  const[images, setImages] = useState(null)
 
   useEffect(() => {
-    async function getProfiles() {
-      if (!profiles) {
-        const response = await getAllProfiles();
-        setProfiles(response);
+    async function getImages(){
+      if(!images) {
+        const res = await getAllImages();
+        setImages(res.images)
       }
     }
 
-    getProfiles();
-  }, [profiles]);
+    getImages();
+  }, [images]);
+  // const [profiles, setProfiles] = useState(null);
+
+  // useEffect(() => {
+  //   async function getProfiles() {
+  //     if (!profiles) {
+  //       const response = await getAllProfiles();
+  //       setProfiles(response);
+  //     }
+  //   }
+
+  //   getProfiles();
+  // }, [profiles]);
 
   // const renderProfile = (user) => {
   //   return (
@@ -52,6 +52,18 @@ function App() {
   //   );
   // };
 
+  const renderImage = (img) => {
+    return (
+      <li key={img._id} className="imgitem">
+<h3>
+  {`${img.title}`}
+</h3>
+<p>{img.location}</p>
+<p>{img.description}</p>
+      </li>
+    )
+  }
+
   return (
     <Router>
     <Routes>
@@ -59,20 +71,18 @@ function App() {
       element={ <><Header /><Search /> <Collections /> </>}
       />
     <Route exact path="/upload"
-      element={ <><Header/> <UploadForm /> </>  }
+      element={ <><Header/> <UploadForm /> 
+      <ul className="imglist"> {images && images.length > 0 ? (
+        images.map((image) => renderImage(image))
+      ) : (<p>No images found</p>
+      )} </ul>
+      </>  }
      />
      <Route exact path="/about"
      element={
        <>
        <Header/>
        <About />
-      {/* <ul>
-        {profiles && profiles.length > 0 ? (
-          profiles.map((profile) => renderProfile(profile))
-        ) : (
-          <p>No profiles found</p>
-        )}
-      </ul> */}
        </>
      }
      />

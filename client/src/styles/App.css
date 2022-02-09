@@ -99,16 +99,16 @@ a:hover{
   text-align: center;
 }
 /* upload form page */
-.upload-form-container{
- align-items: center;
+h2{
+  padding: 50px;
   font-size: 1.5rem;
 }
 
 .upload-form{
-  display: block;
-  padding: 10px;
-  align-content: center;
- 
+  display: flex;
+ justify-content:center;
+
+  
 }
 
  .upload-title-name, .upload-description {
@@ -154,4 +154,24 @@ a:hover{
 
 .about-container p {
   padding: 5px;
+}
+
+.imglist{
+padding: 10px;
+
+}
+
+.imgitem{
+  display: inline-block;
+  background-color: var(--color-peach);
+  border-radius: 10px;
+  color: var(--color-navy);
+ padding: 20px;
+ margin: 10px;
+ box-shadow: 6px 6px 2px var(--color-grey);
+}
+
+.imgitem:hover{
+opacity: 0.7;
+cursor: pointer;
 }

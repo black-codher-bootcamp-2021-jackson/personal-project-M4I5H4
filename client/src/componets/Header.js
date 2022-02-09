@@ -7,6 +7,7 @@ const Header = () => {
     <div className="header">
         <div className="navimg">
             <img className="leologo" src={ leologo } alt="lion logo"/>
+            <span> </span>
         </div>
       <h1>
         <i className="fas fa-photo-video"></i>  {" "} Reference Library {" "} </h1>

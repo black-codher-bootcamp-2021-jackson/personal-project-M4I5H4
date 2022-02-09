@@ -19,6 +19,7 @@
     "dotenv": "^14.2.0",
     "express": "^4.17.1",
     "mongoose": "^6.1.7",
+    "multer": "^1.4.4",
     "react-lorem-ipsum": "^1.4.9"
   },
   "devDependencies": {
