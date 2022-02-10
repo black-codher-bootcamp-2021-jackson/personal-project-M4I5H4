@@ -27,6 +27,7 @@ function App() {
 
     getImages();
   }, [images]);
+  console.log(images);
   // const [profiles, setProfiles] = useState(null);
 
   // useEffect(() => {
@@ -52,17 +53,17 @@ function App() {
   //   );
   // };
 
-  const renderImage = (img) => {
-    return (
-      <li key={img._id} className="imgitem">
-<h3>
-  {`${img.title}`}
-</h3>
-<p>{img.location}</p>
-<p>{img.description}</p>
-      </li>
-    )
-  }
+//   const renderImage = (img) => {
+//     return (
+//       <li key={img._id} className="imgitem">
+// <h3>
+//   {`${img.title}`}
+// </h3>
+// <p>{img.location}</p>
+// <p>{img.description}</p>
+//       </li>
+//     )
+//   }
 
   return (
     <Router>
@@ -72,10 +73,11 @@ function App() {
       />
     <Route exact path="/upload"
       element={ <><Header/> <UploadForm /> 
-      <ul className="imglist"> {images && images.length > 0 ? (
-        images.map((image) => renderImage(image))
+  
+       <div className="imglist"> {images && images.length > 0 ? (
+      images.map((image) => <img width="500px" height="300px"src={`http://localhost:8080/api/images/${image.filename}`} />)
       ) : (<p>No images found</p>
-      )} </ul>
+      )} </div>
       </>  }
      />
      <Route exact path="/about"

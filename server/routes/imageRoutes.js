@@ -68,15 +68,20 @@ const imageRoutes = (app) => {
     upload.single('image'),
     async (req, res) => {
       try {
-        console.log(req.file);
+        console.log(req.body);
         // const addImage = await Images.create(
         //   req.body
         // );
-        const results = await Images.find();
-        console.log(results)
+        //delete 80/81 later - metadata needs to be part of the image object
+        // const results = await Images.find();
+        // const lastItemInArray = results[results.length -1]
+        // const itemWithData = {...lastItemInArray, _doc:{metadata: {
+        //   description: req.body.description,
+        //   loaction: req.body.location,
+        //   theme: req.body.theme}}}
+        //   console.log(itemWithData)
         res.status(201).json({
           success: true,
-          addImage,
         });
       } catch (err) {
         res.status(400).json({ success: false });
