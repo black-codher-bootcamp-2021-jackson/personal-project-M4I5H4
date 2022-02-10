@@ -2,9 +2,8 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 const imagesSchema = new Schema({
-  title: String,
-  description: String,
-  location: String,
-});
+ filename: String
+})
 
-mongoose.model("images", imagesSchema);
+mongoose.model("images", imagesSchema, "images.files");
+// mongoose.model("fs.files", imagesSchema);
