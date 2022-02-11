@@ -75,7 +75,7 @@ function App() {
       element={ <><Header/> <UploadForm /> 
   
        <div className="imglist"> {images && images.length > 0 ? (
-      images.map((image) => <img width="500px" height="300px"src={`http://localhost:8080/api/images/${image.filename}`} />)
+      images.map((image) => <img width="250px" height="150px"src={`http://localhost:8080/api/images/${image.filename}`} />)
       ) : (<p>No images found</p>
       )} </div>
       </>  }
