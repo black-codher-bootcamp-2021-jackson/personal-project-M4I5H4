@@ -8,14 +8,16 @@ import Collections from "./componets/Collections";
 import UploadForm from "./componets/UploadForm";
 import About from "./componets/About";
 
+
 // SERVICES THAT CALL OUR API ENDPOINTS
 // import { getAllProfiles } from "./services/profileService";
-import { getAllImages } from "./services/imageService";
+import { getAllImages, deleteImage } from "./services/imageService";
 
 
 function App() {
 
   const[images, setImages] = useState(null)
+
 
   useEffect(() => {
     async function getImages(){
@@ -28,42 +30,16 @@ function App() {
     getImages();
   }, [images]);
   console.log(images);
-  // const [profiles, setProfiles] = useState(null);
 
-  // useEffect(() => {
-  //   async function getProfiles() {
-  //     if (!profiles) {
-  //       const response = await getAllProfiles();
-  //       setProfiles(response);
-  //     }
-  //   }
+  //Delete fucntion
+  const deleteOnClick = (id) => {
+     deleteImage(id)
+    const deleteImageFromList = images.filter(
+      (img) => img._id !== id
+    );
+    setImages(deleteImageFromList);
+  }
 
-  //   getProfiles();
-  // }, [profiles]);
-
-  // const renderProfile = (user) => {
-  //   return (
-  //     <li key={user._id}>
-  //       <h3>
-  //         {`${user.first_name} 
-  //         ${user.last_name}`}
-  //       </h3>
-  //       <p>{user.location}</p>
-  //     </li>
-  //   );
-  // };
-
-//   const renderImage = (img) => {
-//     return (
-//       <li key={img._id} className="imgitem">
-// <h3>
-//   {`${img.title}`}
-// </h3>
-// <p>{img.location}</p>
-// <p>{img.description}</p>
-//       </li>
-//     )
-//   }
 
   return (
     <Router>
@@ -71,14 +47,16 @@ function App() {
       <Route exact path="/"
       element={ <><Header /><Search /> <Collections /> </>}
       />
+
     <Route exact path="/upload"
       element={ <><Header/> <UploadForm /> 
-  
-       <div className="imglist"> {images && images.length > 0 ? (
-      images.map((image) => <img width="250px" height="150px"src={`http://localhost:8080/api/images/${image.filename}`} />)
-      ) : (<p>No images found</p>
-      )} </div>
+      <div className="imglist"> {images && images.length > 0 ? (
+        images.map((image) => <div className="img"><img width="350px" height="200px"src={`http://localhost:8080/api/images/${image.filename}`} /> <button type="button" className="del-btn" onClick={() => deleteOnClick(image._id)}><i className="fa-solid fa-trash"></i> Delete</button></div>
+       )  
+        ) : (<p>No images found</p>
+        )} </div>
       </>  }
+
      />
      <Route exact path="/about"
      element={

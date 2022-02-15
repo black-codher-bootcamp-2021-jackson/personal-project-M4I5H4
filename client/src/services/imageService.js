@@ -6,4 +6,8 @@ const getAllImages = async() => {
     return res.data || [];
 }
 
-export { getAllImages };
+const deleteImage = async(id) => {
+    const res = await axios.delete(`/api/images/${id}`);
+    return res.data || [];
+}
+export { getAllImages, deleteImage };

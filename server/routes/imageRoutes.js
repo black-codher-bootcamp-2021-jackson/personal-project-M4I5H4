@@ -24,7 +24,9 @@ const dataStorage = new GridFsStorage({
       filename: `${Date.now()}--${
         file.originalname
       }`,
+      metadata: req.body,
       bucketName: 'images',
+      
     };
   },
 });
@@ -68,18 +70,21 @@ const imageRoutes = (app) => {
     upload.single('image'),
     async (req, res) => {
       try {
-        console.log(req.body);
+        console.log(req.file);
+        console.log('this is the body', req.body)
+        const { filename } = req.file
         // const addImage = await Images.create(
         //   req.body
         // );
         //delete 80/81 later - metadata needs to be part of the image object
-        // const results = await Images.find();
+        await Images.updateMany({filename}, {$set: {metadata: req.body}}, {upsert: true, new: true} );
+        const results = await Images.findOne({filename})
         // const lastItemInArray = results[results.length -1]
         // const itemWithData = {...lastItemInArray, _doc:{metadata: {
         //   description: req.body.description,
         //   loaction: req.body.location,
         //   theme: req.body.theme}}}
-        //   console.log(itemWithData)
+          console.log('we found the image', results)
         res.status(201).json({
           success: true,
         });
