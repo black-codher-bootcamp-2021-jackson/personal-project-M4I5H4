@@ -3,7 +3,7 @@ import React from "react";
 const Search = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
-    props.findImages(props.term);
+    props.setImages(props.setTerm);
   };
   return (
     <div>
@@ -19,9 +19,9 @@ const Search = (props) => {
           id="term"
           className="searchBar"
           type="text"
-          placeholder="please tyoe here..."
-          value={props.term}
-          onChange={(e) => props.setTerm(e.target.value)}
+          placeholder="please type here..."
+          value={props.searchTerm}
+          onChange={(e) => props.setSearchTerm(e.target.value)}
         />
         <button
           className="submit-btn"
@@ -30,6 +30,7 @@ const Search = (props) => {
           Search
         </button>
       </form>
+
     </div>
   );
 };

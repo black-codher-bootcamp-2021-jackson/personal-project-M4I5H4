@@ -12,7 +12,7 @@ const Header = () => {
       <h1>
         <i className="fas fa-photo-video"></i>  {" "} Reference Library {" "} </h1>
       <div className="breadcrumb_nav">
-        <Link to="/" className="home"> <i class="fa-solid fa-magnifying-glass"></i> SEARCH </Link> |
+        <Link to="/" className="home"> <i className="fa-solid fa-magnifying-glass"></i> SEARCH </Link> |
         <Link to="/upload" className="uploadlink">
           {" "}
           <i className="fas fa-upload"></i> UPLOAD{" "}

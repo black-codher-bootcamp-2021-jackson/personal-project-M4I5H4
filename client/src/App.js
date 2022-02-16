@@ -7,6 +7,7 @@ import Search from "./componets/Search";
 import Collections from "./componets/Collections";
 import UploadForm from "./componets/UploadForm";
 import About from "./componets/About";
+import SingleImage from "./componets/SingleImage";
 
 
 // SERVICES THAT CALL OUR API ENDPOINTS
@@ -17,6 +18,7 @@ import { getAllImages, deleteImage } from "./services/imageService";
 function App() {
 
   const[images, setImages] = useState(null)
+  const [searchTerm, setSearchTerm] = useState("")
 
 
   useEffect(() => {
@@ -26,26 +28,31 @@ function App() {
         setImages(res.images)
       }
     }
-
     getImages();
   }, [images]);
-  console.log(images);
+  console.log(images)
 
   //Delete fucntion
   const deleteOnClick = (id) => {
      deleteImage(id)
-    const deleteImageFromList = images.filter(
+    const currentList = images.filter(
       (img) => img._id !== id
     );
-    setImages(deleteImageFromList);
+    setImages(currentList);
   }
 
+  //Search function
+ async function findImages(value) {
+   
+ }
 
   return (
     <Router>
     <Routes>
       <Route exact path="/"
-      element={ <><Header /><Search /> <Collections /> </>}
+      element={ <><Header /><Search setSearchTerm={setSearchTerm}/> <Collections /> 
+      <SingleImage /> 
+      </>}
       />
 
     <Route exact path="/upload"

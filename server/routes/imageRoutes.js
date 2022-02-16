@@ -44,8 +44,29 @@ const imageRoutes = (app) => {
     });
   });
 
+app.get('/api/images/search', async (req, res) => {
+const keyword = req.query.keyword
+Images.find({ description:keyword }, function(err, img){
+ 
+res.json(img)
+})
 
-  //@desc GET single image by id
+// const keyword = req.query.keyword
+// const query = Images.find({ description: 'warm'})
+//  const doc = await query.exec()
+//  doc.description
+// query.getFilter()
+
+
+// return res.send({
+  
+  // keyword
+// })
+
+})
+
+
+  //@desc GET image by file
   app.get('/api/images/:filename', async (req, res) => {
     const { filename } = req.params;
 
@@ -73,17 +94,10 @@ const imageRoutes = (app) => {
         console.log(req.file);
         console.log('this is the body', req.body)
         const { filename } = req.file
-        // const addImage = await Images.create(
-        //   req.body
-        // );
-        //delete 80/81 later - metadata needs to be part of the image object
+       
         await Images.updateMany({filename}, {$set: {metadata: req.body}}, {upsert: true, new: true} );
         const results = await Images.findOne({filename})
-        // const lastItemInArray = results[results.length -1]
-        // const itemWithData = {...lastItemInArray, _doc:{metadata: {
-        //   description: req.body.description,
-        //   loaction: req.body.location,
-        //   theme: req.body.theme}}}
+      
           console.log('we found the image', results)
         res.status(201).json({
           success: true,
@@ -111,6 +125,8 @@ const imageRoutes = (app) => {
         .send({ success: true, modifyImageData });
     }
   );
+
+  
 
   //@desc DELETE image using id
 
