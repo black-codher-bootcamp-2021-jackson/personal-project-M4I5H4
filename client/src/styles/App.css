@@ -12,7 +12,7 @@
 }
 body {
   background-color: #000021;
-  font-family: "Playfiar Display", "Poopins",
+  font-family: "Playfiar Display", "Poppins",
     "Lato", sans-serif;
   color: #FF6666;
   height: 100vh;
@@ -48,15 +48,31 @@ a:hover{
 }
 
 /* serach bar */
-.form{
-  display: grid;
+.search-form{
+
+  width  : 740px;
+  height : 350px;
+  margin : 2% auto;
+  padding: 2em;
+  border-radius: 10px;
+  background : var(--color-grey);
+  color: var(--color-navy);
+ justify-content: center;
+  display  : grid;
+   grid-gap : 20px;
+   grid-template-columns : auto;
+ font-family: "Poppins";
+ font-weight: bold;
 }
+
+
 .label{
   font-size: 1.2rem;
   margin-bottom: 0.2rem;
 }
 
 .searchBar{
+
   font-size: 1rem;
   padding: 0.5em 2em;
   line-height:  1.5rem;
@@ -73,9 +89,11 @@ a:hover{
   padding: 0.5em 2em;
   border: 1px solid var(--color-navy);
   border-radius: 20px;
-  font-size: 1rem;
+  font-size: 1.2rem;
+  font-family: "lato";
+  font-weight: bold;
   cursor: pointer;
-  transition: background-color 350ms;
+  transition: background-color ease-in 350ms;
   width: 100%;
 }
 
@@ -85,80 +103,68 @@ a:hover{
 }
 
 .collections{
-  margin-top: 50px;
-  margin-bottom: 15px;
-  /* align-items: center; */
-  /* justify-content: space-between; */
-  
+position : relative;
+display: flex;
+
+ margin : 2% auto;
+ padding: 1em;
+ border-radius: 10px;
+justify-content: center;
+font-family: "Poppins";
+font-weight: bold;
 }
 
 .collections span {
-  padding: 30px;
+ 
+  padding: 30px 45px;
  font-size: 3em;
+
   cursor: pointer;
-
-  
 }
-/* upload form page */
+
+.collections span:hover{
+  color: var(--color-grey);
+}
+/* UPLOAD FORM*/
 h2{
-  padding: 50px;
+  padding: 40px;
   font-size: 1.5rem;
+text-align: center;
 }
-
 
 .upload-form{
-  display: flex;
- justify-content:center;
-
+ position : relative;
+ width  : 740px;
+ height : 470px;
+ margin : 0 auto;
+ padding: 2em;
+ box-sizing: border-box;
+ border-radius: 10px;
+ background : var(--color-grey);
+ color: var(--color-navy);
+justify-content: center;
+ display  : grid;
+  grid-gap : 20px;
+  grid-template-columns : auto;
+font-family: "Poppins";
+font-weight: bold;
   
 }
 
- .upload-title-name, .upload-description {
-  font-size: 1rem;
-  padding: 1em 2em;
-  line-height:  1.5rem;
-  border-radius: 20px;
-  margin-bottom: 1rem;
-
-}
-
-.upload-form input.upload-image-file {
-
-  color: var(--color-peach);
-  font-size: 1rem;
-  padding: 0.5em 2em;
-  line-height:  1.5rem;
-  border-radius: 20px;
-  margin-bottom: 1rem;
-  cursor: pointer;
-}
-
-  .upload-form button {
-  background-color: var(--color-grey);
+textarea{
   color: var(--color-navy);
-  padding: 0.5em 2em;
+  padding: 0.5em 1em;
   border: 1px solid var(--color-navy);
   border-radius: 20px;
   font-size: 1rem;
-  cursor: pointer;
   transition: background-color 350ms;
+  width: 100%;
 }
 
-.upload-form button:hover{
-  background-color: var(--color-peach);
-  color: var(--color-grey);
+.searchBar:hover, textarea:hover{
+border: 2px solid var(--color-peach);
+cursor: pointer;
 }
-
-.about-container{
-  margin: 5px;
-  padding: 10px;
-}
-
-.about-container p {
-  padding: 5px;
-}
-
-
 
 .imglist div{
   display: inline-block;
@@ -171,12 +177,22 @@ h2{
   
 }
 
-
 .imglist img:hover{
 opacity: 0.7;
 cursor: pointer;
+border: 1px solid var(--color-navy);
 }
 
+ 
+/* ABOUT */
+.about-container{
+  margin: 5px;
+  padding: 10px;
+}
+
+.about-container p {
+  padding: 5px;
+}
 
 
 .mernDiv .item{

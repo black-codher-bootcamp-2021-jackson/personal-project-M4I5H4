@@ -56,13 +56,18 @@ function App() {
     <Routes>
       <Route exact path="/"
       element={ <><Header /><Search setSearchTerm={setSearchTerm}/> <Collections /> 
+      <div className="imglist"> <h2>Searched Images</h2>{images && images.length > 0 ? (
+        images.map((image) => <div className="img"><img width="350px" height="200px"src={`http://localhost:8080/api/images/${image.filename}`} /> </div>
+       )  
+        ) : (<p>No images found</p>
+        )} </div>
       <SingleImage /> 
       </>}
       />
 
     <Route exact path="/upload"
       element={ <><Header/> <UploadForm /> 
-      <div className="imglist"> {images && images.length > 0 ? (
+      <div className="imglist"> <h2>Recent Images</h2>{images && images.length > 0 ? (
         images.map((image) => <div className="img"><img width="350px" height="200px"src={`http://localhost:8080/api/images/${image.filename}`} /> <button type="button" className="del-btn" onClick={() => deleteOnClick(image._id)}><i className="fa-solid fa-trash"></i> Delete</button></div>
        )  
         ) : (<p>No images found</p>

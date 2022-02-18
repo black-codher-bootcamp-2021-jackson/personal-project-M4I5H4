@@ -1,17 +1,15 @@
 import React from 'react';
 import { useState } from 'react';
-import { name } from 'react-lorem-ipsum';
 
 
 const UploadForm = () => {
-  const [inputs, setImputs] = useState
-  const handleChange = (e) =>{
-    const imageFile = e.target.file
-    const desc = e.target.description;
-    const loc = e.target.location
-    const thm = e.target.theme
+  const [inputs, setInputs] = useState({ 
+    imageFile: "", desc: "", loc: "", thm:""
+  })
 
-    setImputs(values =>({...values, [name]: imageFile, [name]:desc, [name]:loc, [name]:thm}))
+  const handleChange = (e) => {
+   setInputs({ ...inputs, [e.target.name]: e.target.value})
+
   }
 
   const handleSubmit = (e) =>{
@@ -20,35 +18,35 @@ const UploadForm = () => {
   }
   return <div className="upload-form-conatiner">
       <h2>Upload Image to Library</h2>
-        <div>
+        
         <form className="upload-form" action="/upload-image" method="POST" encType="multipart/form-data">
-          <div>
-              <label>Select your image</label>
-              <input type='file' name="imageFile" value={inputs.imageFile || ""} onChange={handleChange}/>
-          </div>
-          <div>
-          <label>Image Description</label>
-                <textarea id="desc" type="text" name="desc" value={inputs.desc || ""} rows="2" 
-                          placeholder="Description">
-                </textarea>
-          </div>
-          <div>
-          <label>Location </label>
+        
+            <label>Select your image{" "}
+              <input type='file' name="imageFile" value={inputs.imageFile} onChange={handleChange}/>
+            </label>{" "}
+          
+            <label> <i className="fa-solid fa-square-poll-horizontal"></i>{" "} Description{" "}
+              <textarea id="desc" type="text" name="desc" value={inputs.desc || ""} rows="2" 
+                          placeholder="general desc of image">
+              </textarea>
+            </label>{" "}
+          
+            <label><i className="fas fa-map-marked-alt"></i> {" "}Location{" "}
                 <textarea id="loc" type="text" name="loc" value={inputs.loc || ""} rows="2" 
-                          placeholder="Location">
+                          placeholder="eg: studio, london">
                 </textarea>
-          </div>
-          <div>
-          <label>Theme</label>
+            </label>{" "}
+          
+            <label><i className="fas fa-palette"></i> {" "}Theme{" "}
                 <textarea id="thm" type="text" name="thm" value={inputs.thm || ""} rows="2" 
-                          placeholder="Theme">
+                          placeholder="eg: colour or mood">
                 </textarea>
-          </div>
-          <div>
-              <input type="submit" name="btn-upload-image" value="Upload" />
-          </div>
+            </label>{" "}
+          
+              <input className="submit-btn" type="submit" name="btn-upload-image" value="Upload" onSubmit={handleSubmit}/>
+          
         </form>
-    </div>
+    
   </div>;
 };
 

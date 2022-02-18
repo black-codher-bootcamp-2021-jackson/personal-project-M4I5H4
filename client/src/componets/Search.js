@@ -8,12 +8,12 @@ const Search = (props) => {
   return (
     <div>
       <form
-        className="form"
+        className="search-form"
         id="searchAPI"
         onSubmit={handleSubmit}
       >
         <label className="label">
-          Search For a Reference:{" "}
+          <h2>Search For a Reference:</h2>{" "}
         </label>
         <input
           id="term"
