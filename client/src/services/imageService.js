@@ -6,8 +6,13 @@ const getAllImages = async() => {
     return res.data || [];
 }
 
+const postImage = async() =>{
+    const res = await axios.post('/api/images');
+    return res.data || ('Image not uploaded');
+}
+
 const deleteImage = async(id) => {
     const res = await axios.delete(`/api/images/${id}`);
     return res.data || [];
 }
-export { getAllImages, deleteImage };
+export { getAllImages, deleteImage, postImage};

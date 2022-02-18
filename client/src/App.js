@@ -12,7 +12,7 @@ import SingleImage from "./componets/SingleImage";
 
 // SERVICES THAT CALL OUR API ENDPOINTS
 // import { getAllProfiles } from "./services/profileService";
-import { getAllImages, deleteImage } from "./services/imageService";
+import { getAllImages, deleteImage, postImage} from "./services/imageService";
 
 
 function App() {
@@ -32,6 +32,11 @@ function App() {
   }, [images]);
   console.log(images)
 
+  // const uploadImage = () => {
+  //   postImage()
+  //   const updateList = images
+  // }
+
   //Delete fucntion
   const deleteOnClick = (id) => {
      deleteImage(id)
@@ -42,9 +47,9 @@ function App() {
   }
 
   //Search function
- async function findImages(value) {
-   
- }
+//  async function findImages(value) {
+
+//  }
 
   return (
     <Router>
