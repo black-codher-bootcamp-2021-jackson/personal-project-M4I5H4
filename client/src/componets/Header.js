@@ -11,6 +11,7 @@ const Header = () => {
         </div>
       <h1>
         <i className="fas fa-photo-video"></i>  {" "} Reference Library {" "} </h1>
+        <h2 className="sub-head">Tools for Creative Industries</h2>
       <div className="breadcrumb_nav">
         <Link to="/" className="home"> <i className="fa-solid fa-magnifying-glass"></i> SEARCH </Link> |
         <Link to="/upload" className="uploadlink">

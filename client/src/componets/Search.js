@@ -13,7 +13,7 @@ const Search = (props) => {
         onSubmit={handleSubmit}
       >
         <label className="label">
-          <h2>Search For a Reference:</h2>{" "}
+          <h2>Search For an Image:</h2>{" "}
         </label>
         <input
           id="term"

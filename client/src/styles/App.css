@@ -29,11 +29,27 @@ body {
   text-align: center;
 
 }
+
+.header h1{
+  font-family: "Playfair Display";
+}
+.breadcrumb_nav{
+  font-family: "Poppins";
+  font-weight: 600;
+}
+
+.sub-head{
+font-size: 20px;
+margin: 0;
+padding: 1%;
+}
+
 .leologo{
-  height: 150px;
+  height: 130px;
   width: 200px;
-  background-color: #D8D8D8;
-  border-radius: 10px;
+  background-color: var(--color-peach);
+  border-radius: 0 10px 10px;
+  
 }
 
 a{
@@ -51,7 +67,7 @@ a:hover{
 .search-form{
 
   width  : 740px;
-  height : 350px;
+  height : 320px;
   margin : 2% auto;
   padding: 2em;
   border-radius: 10px;
