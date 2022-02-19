@@ -116,7 +116,7 @@ res.json(img)
       const id = req.params.id;
 
       const updateById = 
-      await Images.findByIdAndUpdate(id, {metadata: req.body}, {upsert: true, new: true});
+      await Images.findByIdAndUpdate(id, {metadata: req.body}, {upsert: true});
     
       return res
         .status(202)
