@@ -36,7 +36,6 @@ const imageRoutes = (app) => {
   //@desc GET all images
   app.get('/api/images', async (req, res) => {
     const images = await Images.find();
-    console.log(images)
     
     return res.status(200).send({
       total_images: images.length,
@@ -91,8 +90,8 @@ res.json(img)
     upload.single('image'),
     async (req, res) => {
       try {
-        console.log(req.file);
-        console.log('this is the body', req.body)
+        // console.log(req.file);
+        // console.log('this is the body', req.body)
         const { filename } = req.file
        
         await Images.updateMany({filename}, {$set: {metadata: req.body}}, {upsert: true, new: true} );
@@ -110,23 +109,24 @@ res.json(img)
 
   //@desc modify image infomation - not working
   app.put(
-    '/api/images/:id',
+    '/api/images/:id', 
     async (req, res, next) => {
+
+      try{
       const id = req.params.id;
 
-      const modifyImageData =
-        await Images.findByIdAndUpdate(
-          id,
-          req.body
-        );
-
+      const updateById = 
+      await Images.findByIdAndUpdate(id, {metadata: req.body}, {upsert: true, new: true});
+    
       return res
         .status(202)
-        .send({ success: true, modifyImageData });
+        .json({ success: true, metadata: req.body, updateById});
+      } catch (err) {
+        res.status(400).json({ success: false })
+      }
     }
   );
 
-  
 
   //@desc DELETE image using id
 
@@ -139,7 +139,7 @@ res.json(img)
         await Images.findByIdAndDelete(id);
 
       return res.status(202).send({
-        err: false,
+        success: true,
         deleteImageById,
       });
     }

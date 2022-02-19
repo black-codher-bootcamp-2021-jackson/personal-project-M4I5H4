@@ -7,4 +7,3 @@ const imagesSchema = new Schema({
 })
 
 mongoose.model("images", imagesSchema, "images.files");
-// mongoose.model("fs.files", imagesSchema);

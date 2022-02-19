@@ -57,10 +57,18 @@ function App() {
       <Route exact path="/"
       element={ <><Header /><Search setSearchTerm={setSearchTerm}/> <Collections /> 
       <div className="imglist"> <h2>Searched Images</h2>{images && images.length > 0 ? (
-      images.map((image) => <div className="img"><img width="350px" height="200px"src={`http://localhost:8080/api/images/${image.filename}`} /><p key={image.filename}>{}</p> </div>
-       )  
-        ) : (<p>No images found</p>
-        )} </div>
+      images.map((image) => <div className="img"><img width="350px" height="200px"src={`http://localhost:8080/api/images/${image.filename}`} /> 
+      </div>)
+        ) : 
+        (<p>No images found</p>)
+        } 
+        <div>
+        {images ? (
+          images.map((nestImg) =>{
+            if(typeof nestImg.metadata !== "undefined")
+            return <p>{nestImg.metadata.description}</p>
+          })):(<p>metadata not found</p>)}</div>
+        </div>
       <SingleImage /> 
       </>}
       />
