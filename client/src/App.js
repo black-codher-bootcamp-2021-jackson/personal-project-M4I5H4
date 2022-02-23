@@ -12,7 +12,7 @@ import SingleImage from "./componets/SingleImage";
 
 // SERVICES THAT CALL OUR API ENDPOINTS
 // import { getAllProfiles } from "./services/profileService";
-import { getAllImages, deleteImage, postImage} from "./services/imageService";
+import { getAllImages, deleteImage, } from "./services/imageService";
 
 
 function App() {
@@ -55,19 +55,19 @@ function App() {
     <Router>
     <Routes>
       <Route exact path="/"
-      element={ <><Header /><Search setSearchTerm={setSearchTerm}/> <Collections /> 
+      element={ <><Header /><Search searchTerm={searchTerm} setSearchTerm={setSearchTerm}/> <Collections /> 
       <div className="imglist"> <h2>Searched Images</h2>{images && images.length > 0 ? (
-      images.map((image) => <div className="img"><img width="350px" height="200px"src={`http://localhost:8080/api/images/${image.filename}`} /> 
+      images.map((image) => <div className="img"><img alt={`${image.filename}`} width="350px" height="200px"src={`http://localhost:8080/api/images/${image.filename}`} /> 
       </div>)
         ) : 
         (<p>No images found</p>)
         } 
-        <div>
+        {/* <div>
         {images ? (
           images.map((nestImg) =>{
             if(typeof nestImg.metadata !== "undefined")
             return <p>{nestImg.metadata.description}</p>
-          })):(<p>metadata not found</p>)}</div>
+          })):(<p>metadata not found</p>)}</div> */}
         </div>
       <SingleImage /> 
       </>}
@@ -76,7 +76,7 @@ function App() {
     <Route exact path="/upload"
       element={ <><Header/> <UploadForm /> 
       <div className="imglist"> <h2>Recent Images</h2>{images && images.length > 0 ? (
-        images.map((image) => <div className="img"><img width="350px" height="200px"src={`http://localhost:8080/api/images/${image.filename}`} /> <button type="button" className="del-btn" onClick={() => deleteOnClick(image._id)}><i className="fa-solid fa-trash"></i> Delete</button></div>
+        images.map((image) => <div className="img"><img alt={`${image.filename}`} width="350px" height="200px"src={`http://localhost:8080/api/images/${image.filename}`} /> <button type="button" className="del-btn" onClick={() => deleteOnClick(image._id)}><i className="fa-solid fa-trash"></i> Delete</button></div>
        )  
         ) : (<p>No images found</p>
         )} </div>

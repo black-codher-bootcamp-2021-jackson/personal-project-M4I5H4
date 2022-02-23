@@ -2,7 +2,12 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 const imagesSchema = new Schema({
- filename: String
+ filename: String, 
+//  metadata: Object,
+//      decscription: String,
+//      location: String,
+//      theme: String
+ 
  
 })
 

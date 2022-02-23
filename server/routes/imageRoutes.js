@@ -45,11 +45,12 @@ const imageRoutes = (app) => {
 
 app.get('/api/images/search', async (req, res) => {
 const keyword = req.query.keyword
-Images.find({ description:keyword }, function(err, img){
- 
-res.json(img)
+const matchKeyword = new RegExp(keyword)
+ const findImg = await Images.find({ metadata:{location: {$regex: matchKeyword }}
+//function(err, img){res.json(img)
 })
 
+return res.status(200).json(findImg)
 // const keyword = req.query.keyword
 // const query = Images.find({ description: 'warm'})
 //  const doc = await query.exec()
@@ -116,11 +117,11 @@ res.json(img)
       const id = req.params.id;
 
       const updateById = 
-      await Images.findByIdAndUpdate(id, {metadata: req.body}, {upsert: true});
-    
+      await Images.findByIdAndUpdate(id, {$set: {metadata: req.body}});
+     console.log({metadata: req.body})
       return res
         .status(202)
-        .json({ success: true, metadata: req.body, updateById});
+        .json({ success: true, updateById, });
       } catch (err) {
         res.status(400).json({ success: false })
       }
