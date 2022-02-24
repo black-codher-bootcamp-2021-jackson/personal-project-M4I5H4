@@ -1,3 +1,4 @@
+const { query } = require('express');
 const mongoose = require('mongoose');
 const Images = mongoose.model('images');
 const multer = require('multer');
@@ -46,11 +47,12 @@ const imageRoutes = (app) => {
 app.get('/api/images/search', async (req, res) => {
 const keyword = req.query.keyword
 const matchKeyword = new RegExp(keyword)
- const findImg = await Images.find({ metadata:{location: {$regex: matchKeyword }}
-//function(err, img){res.json(img)
-})
+ const findImg = await Images.find({ metadata: { description: { $regex: matchKeyword }}})
+console.log(matchKeyword)
+console.log(findImg)
 
-return res.status(200).json(findImg)
+res.status(200).json(findImg)
+
 // const keyword = req.query.keyword
 // const query = Images.find({ description: 'warm'})
 //  const doc = await query.exec()
